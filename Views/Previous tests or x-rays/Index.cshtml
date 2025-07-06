@@ -1,0 +1,213 @@
+﻿@* <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Previous tests or x-rays</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            margin-right: 16px;
+            cursor: pointer;
+        }
+
+        .logo {
+            margin-left: auto;
+            margin-right: 35px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            color: #1976d2;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .main-title {
+            color: #4b5bb3;
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
+
+        .sub-question {
+            color: #222;
+            font-size: 1.07rem;
+            margin-bottom: 18px;
+        }
+
+        .upload-box {
+            border: 2px dashed #bfc8e6;
+            border-radius: 10px;
+            padding: 28px 18px;
+            background: #f6f8fe;
+            text-align: center;
+            position: relative;
+            width: 350px;
+            margin-bottom: 25px;
+            transition: border-color 0.2s;
+        }
+
+            .upload-box.dragover {
+                border-color: #1976d2;
+                background: #e3eafd;
+            }
+
+        .upload-icon {
+            font-size: 2.4rem;
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .upload-text {
+            color: #222;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .select-file-btn {
+            margin-top: 10px;
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            color: #fff;
+            background: #1976d2;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+            .select-file-btn:hover {
+                background: #1251a3;
+            }
+
+        .file-name {
+            margin-top: 12px;
+            color: #444;
+            font-size: 0.98rem;
+        }
+
+        .send-btn {
+            width: 340px;
+            padding: 0.8rem 0;
+            background: #4b5bb3;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background 0.2s;
+        }
+
+            .send-btn:hover {
+                background: #303a7b;
+            }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="back-btn" onclick="window.history.back();">&larr;</button>
+        <div class="logo">
+            <img src="your-logo.png" alt="Taskheesy Logo" class="logo-img" />
+            <span class="logo-text">Taskheesy</span>
+        </div>
+    </div>
+
+    <div class="main-title">Previous tests or x-rays</div>
+    <div class="sub-question">Have you had any tests or x-rays recently?</div>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+        <div class="upload-box" id="dropZone">
+            <div class="upload-icon">&#8682;</div>
+            <div class="upload-text">Drag and Drop here</div>
+            <div style="color:#888;">or</div>
+            <input type="file" id="fileInput" name="file" style="display:none;" />
+            <button type="button" class="select-file-btn" onclick="document.getElementById('fileInput').click();">Select file</button>
+            <div class="file-name" id="fileName"></div>
+        </div>
+        <button type="submit" class="send-btn">Send</button>
+    </form>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileName = document.getElementById('fileName');
+
+        dropZone.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', function (e) {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', function (e) {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                fileName.textContent = e.dataTransfer.files[0].name;
+            }
+        });
+
+        fileInput.addEventListener('change', function () {
+            if (fileInput.files.length) {
+                fileName.textContent = fileInput.files[0].name;
+            }
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!fileInput.files.length) {
+                alert('Please select a file first.');
+                return;
+            }
+            // يمكنك هنا إرسال الملف باستخدام AJAX أو تركه يذهب للباك إند مباشرةً
+            alert('File ready to upload: ' + fileInput.files[0].name);
+            // مثال على إرسال الملف باستخدام fetch:
+            /*
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            fetch('/YourController/UploadAction', {
+                method: 'POST',
+                body: formData
+            }).then(...);
+            */
+        });
+    </script>
+</body>
+</html>
+ *@

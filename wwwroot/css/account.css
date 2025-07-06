@@ -1,0 +1,161 @@
+﻿.account-container {
+    background-image: url('../images/account-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.account-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    opacity: .9;
+}
+
+
+.divider {
+    color: #6c757d;
+}
+
+    .divider::before,
+    .divider::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #dee2e6;
+        margin: auto;
+    }
+
+.btn-google {
+    background-color: #db4437;
+    color: white;
+}
+
+
+.btn-google {
+    border: 1px solid #ddd;
+    background-color: white;
+    color: #444;
+    padding: 10px 15px;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-radius: 5px;
+}
+
+    .btn-google:hover {
+        background-color: #f7f7f7;
+        color: #222;
+        text-decoration: none;
+    }
+body {
+    background-color: #f4f6f8;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+}
+
+.account-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.account-box {
+    background-color: #ffffff;
+    padding: 35px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #444;
+}
+
+.form-control {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    color: #333;
+}
+
+    .form-control:focus {
+        border-color: #5a9ef8;
+        box-shadow: 0 0 0 0.2rem rgba(90, 158, 248, 0.25);
+    }
+
+.btn-success {
+    background-color: #3578e5;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 10px;
+}
+
+.btn-google {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+    color: #444;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .btn-google:hover {
+        background-color: #f0f0f0;
+        border-color: #ccc;
+    }
+
+a.text-decoration-none {
+    color: #3578e5;
+    text-decoration: none;
+}
+
+    a.text-decoration-none:hover {
+        text-decoration: underline;
+    }
+
+.gap-2 {
+    gap: 8px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+

@@ -1,0 +1,155 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Users> signInManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Tashkheesy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="~/images/logo3.png" type="image/png" sizes="256x256">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style> 
+
+
+        .search-bar-modern {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            background-color: #f5f7fa;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+            .search-bar-modern:focus {
+                border-color: #007bff;
+                outline: none;
+                background-color: #fff;
+                box-shadow: 0 0 8px rgba(0,123,255,0.3);
+            }
+
+        .navbar-user-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-auth {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+            .btn-auth.login {
+                background-color: #f0f0f0;
+                color: #333;
+            }
+
+            .btn-auth.signup {
+                background-color: #007bff;
+                color: white;
+            }
+
+            .btn-auth.logout {
+                background-color: #dc3545;
+                color: white;
+            }
+
+            .btn-auth:hover {
+                opacity: 0.9;
+                box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            }
+
+        .welcome-text {
+            font-weight: 500;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+    <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 10px 30px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+
+        <!-- Logo -->
+        <div class="logo" style="display: flex; align-items: center;">
+            <img src="~/images/logo3.png" alt="Tashkheesy Logo" style="height: 90px;" />
+        </div>
+
+        <!-- Navigation Links -->
+        <nav style="display: flex; gap: 25px; align-items: center; flex-wrap: wrap;">
+            <a href="#" class="nav-link-modern">Clinics</a>
+            <a href="#reservations" class="nav-link-modern">Doctors</a>
+            <a href="#WhyTashkheesy" class="nav-link-modern">Info</a>
+            <a href="/Chat/Index" class="nav-link-modern">ChatBot</a>
+        </nav>
+
+
+
+        <!-- User Links -->
+        <ul class="navbar-user-links">
+            @if (signInManager.IsSignedIn(User))
+            {
+                <li class="nav-item welcome-text">
+                    👋 Welcome, <strong>@User.Identity.Name</strong>
+                </li>
+                <li class="nav-item">
+                    <a class="btn-auth logout" asp-controller="Account" asp-action="Logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="btn-auth login" asp-controller="Account" asp-action="Login">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn-auth signup" asp-controller="Account" asp-action="Register">
+                        <i class="fas fa-user-plus"></i> Sign Up
+                    </a>
+                </li>
+            }
+        </ul>
+
+    </header>
+
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        <img src="~/images/Logo3.png" alt="Tashkheesy Logo" class="footer-logo" />
+        <div class="social-icons">
+            <i class="fab fa-linkedin icon"></i>
+            <i class="fab fa-instagram icon"></i>
+            <i class="fab fa-facebook icon"></i>
+            <i class="fab fa-twitter icon"></i>
+        </div>
+        <p>&copy; Tashkheesy 202X. All rights reserved.</p>
+    </footer>
+
+    <script src="~/js/site.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
